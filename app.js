@@ -26,7 +26,7 @@ const addItem = e => {
               <i class="fas fa-edit"></i>
             </button>
             <button type="button" class="delete-btn">
-              <i class="fas fa-trash-can"></i>
+              <i class="fas fa-trash"></i>
             </button>
           </div>`;
         // appendo l'elemento al genitore
