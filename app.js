@@ -7,6 +7,14 @@ const addItem = e => {
     const value = grocery.value;
     // genero un id fasullo per il nuovo elemento
     const id = new Date().toISOString();
+    // imposto le condizioni per creare un nuovo elemento
+    if (value && !isEdited) {
+
+    } else if (value && isEdited) {
+
+    } else {
+
+    };
 };
 
 // ****** SELECT ITEMS **********
