@@ -9,6 +9,26 @@ const addItem = e => {
     const id = new Date().toISOString();
     // imposto le condizioni per creare un nuovo elemento
     if (value && !isEdited) {
+        // creo un nuovo elemento
+        const element = document.createElement('article');
+        // gli aggiungo una classe
+        element.classList.add('grocery-item');
+        // aggiungo anche un id
+        const attr = document.createAttribute('data-id');
+        // col valore dell'id fasullo creato sopra
+        attr.value = id;
+        // assegno all'element il data attribute
+        element.setAttributeNode('attr');
+        // creo il contenuto dell'elemento
+        element.innerHTML = `<p class="title">item</p>
+          <div class="btn-container">
+            <button type="button" class="edit-btn">
+              <i class="fas fa-edit"></i>
+            </button>
+            <button type="button" class="delete-btn">
+              <i class="fas fa-trash-can"></i>
+            </button>
+          </div>`
 
     } else if (value && isEdited) {
 
