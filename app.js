@@ -24,6 +24,13 @@ const displayAlert = (text, action) => {
     alert.innerText = text;
     // aggiungo una classe che colori l'alert di rosso
     alert.classList.add(`alert-${action}`);
+    // imposto un tempo oltre il quale l'alert deve sparire
+    setTimeout(() => {
+        // svuoto il messaggio per l'alert
+        alert.innerText = '';
+        // rimuovo una classe che colori l'alert di rosso
+        alert.classList.remove(`alert-${action}`);
+    }, 5000)
 };
 
 // ****** SELECT ITEMS **********
