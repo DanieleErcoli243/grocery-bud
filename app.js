@@ -12,6 +12,9 @@ const clearBtn = document.querySelector('.delete-btn');
 
 // edit option
 
+let editElement;
+let isEdited = false;
+let editId = '';
 // ****** EVENT LISTENERS **********
 
 // ****** FUNCTIONS **********
