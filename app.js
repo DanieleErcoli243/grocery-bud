@@ -59,6 +59,13 @@ const displayAlert = (text, action) => {
     }, 5000)
 };
 
+// ****** LOCAL STORAGE **********
+// creo una funzione per salvare il dato su Local Storage
+
+const addToLocalStorage = (id, value) => {
+
+};
+
 // ****** SELECT ITEMS **********
 const alert = document.querySelector('.alert');
 
@@ -82,6 +89,5 @@ let editId = '';
 // aggancio un ascoltatore di eventi al form
 form.addEventListener('submit', addItem);
 
-// ****** LOCAL STORAGE **********
 
 // ****** SETUP ITEMS **********
