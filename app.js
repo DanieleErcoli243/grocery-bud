@@ -5,6 +5,8 @@ const addItem = e => {
     e.preventDefault();
     // registro il valore dell'input
     const value = grocery.value;
+    // genero un id fasullo per il nuovo elemento
+    const id = new Date().toISOString();
 };
 
 // ****** SELECT ITEMS **********
