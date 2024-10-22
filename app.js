@@ -59,6 +59,11 @@ const displayAlert = (text, action) => {
     }, 5000)
 };
 
+// ripristino il comportamento di base
+const setBackToDefault = () => {
+
+};
+
 // ****** LOCAL STORAGE **********
 // creo una funzione per salvare il dato su Local Storage
 
