@@ -3,6 +3,8 @@
 const addItem = e => {
     // impedisco il comportamento del form
     e.preventDefault();
+    // registro il valore dell'input
+    const value = grocery.value;
 };
 
 // ****** SELECT ITEMS **********
