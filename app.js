@@ -35,6 +35,10 @@ const addItem = e => {
         displayAlert('item successfully added to the list', 'success');
         // mostro anche il container
         container.classList.add('show-container');
+        // salvo su local storage
+        addToLocalStorage(id, value);
+        // ripristino il comportamento di base
+        setBackToDefault();
 
     } else if (value && isEdited) {
 
