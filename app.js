@@ -31,6 +31,8 @@ const addItem = e => {
           </div>`;
         // appendo l'elemento al genitore
         list.appendChild(element);
+        // mostro l'alert
+        displayAlert('item successfully added to the list', 'success');
 
     } else if (value && isEdited) {
 
