@@ -20,7 +20,7 @@ const addItem = e => {
         // assegno all'element il data attribute
         element.setAttributeNode('attr');
         // creo il contenuto dell'elemento
-        element.innerHTML = `<p class="title">item</p>
+        element.innerHTML = `<p class="title">${value}</p>
           <div class="btn-container">
             <button type="button" class="edit-btn">
               <i class="fas fa-edit"></i>
@@ -28,7 +28,9 @@ const addItem = e => {
             <button type="button" class="delete-btn">
               <i class="fas fa-trash-can"></i>
             </button>
-          </div>`
+          </div>`;
+        // appendo l'elemento al genitore
+        list.appendChild(element);
 
     } else if (value && isEdited) {
 
