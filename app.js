@@ -13,8 +13,17 @@ const addItem = e => {
     } else if (value && isEdited) {
 
     } else {
-
+        // invoco la funzione per mostrare l'alert
+        displayAlert('please, enter value', 'danger');
     };
+};
+
+// creo una funzione per mostrare l'alert
+const displayAlert = (text, action) => {
+    // imposto un messaggio per l'alert
+    alert.innerText = text;
+    // aggiungo una classe che colori l'alert di rosso
+    alert.classList.add(`alert-${action}`);
 };
 
 // ****** SELECT ITEMS **********
