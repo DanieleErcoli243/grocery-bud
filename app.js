@@ -18,7 +18,7 @@ const addItem = e => {
         // col valore dell'id fasullo creato sopra
         attr.value = id;
         // assegno all'element il data attribute
-        element.setAttributeNode('attr');
+        element.setAttributeNode(attr);
         // creo il contenuto dell'elemento
         element.innerHTML = `<p class="title">${value}</p>
           <div class="btn-container">
@@ -33,6 +33,8 @@ const addItem = e => {
         list.appendChild(element);
         // mostro l'alert
         displayAlert('item successfully added to the list', 'success');
+        // mostro anche il container
+        container.classList.add('show-container');
 
     } else if (value && isEdited) {
 
