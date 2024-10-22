@@ -1,3 +1,9 @@
+// ****** FUNCTIONS **********
+
+const addItem = () => {
+
+};
+
 // ****** SELECT ITEMS **********
 const alert = document.querySelector('.alert');
 
@@ -15,9 +21,11 @@ const clearBtn = document.querySelector('.delete-btn');
 let editElement;
 let isEdited = false;
 let editId = '';
+
 // ****** EVENT LISTENERS **********
 
-// ****** FUNCTIONS **********
+// aggancio un ascoltatore di eventi al form
+form.addEventListener('submit', addItem);
 
 // ****** LOCAL STORAGE **********
 
