@@ -1,7 +1,8 @@
 // ****** FUNCTIONS **********
 
-const addItem = () => {
-
+const addItem = e => {
+    // impedisco il comportamento del form
+    e.preventDefault();
 };
 
 // ****** SELECT ITEMS **********
