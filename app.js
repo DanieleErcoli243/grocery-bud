@@ -75,7 +75,19 @@ const setBackToDefault = () => {
 // funzione per svuotare la lista
 
 const clearList = () => {
-
+  console.log('ao a fata');
+  // seleziono tutti gli elementi della lista
+  const items = document.querySelectorAll('.grocery-item');
+  // stabilisco le condizioni per eliminare gli elementi
+  if (items.length > 0) {
+    // ciclo sugli elementi per accedere a ognuno di loro
+    items.forEach(item => {
+      // rimuovo l'elemento
+      list.removeChild(item);
+    });
+    // rimuovo la classe che mostra il container
+    container.classList.remove('show-container');
+  };
 };
 
 // ****** LOCAL STORAGE **********
@@ -95,7 +107,7 @@ const grocery = document.getElementById('grocery');
 const submitBtn = document.querySelector('.submit-btn');
 const container = document.querySelector('.grocery-container');
 const list = document.querySelector('.grocery-list');
-const clearBtn = document.querySelector('.delete-btn');
+const clearBtn = document.querySelector('.clear-btn');
 
 // edit option
 
