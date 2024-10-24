@@ -108,5 +108,9 @@ let editId = '';
 // aggancio un ascoltatore di eventi al form
 form.addEventListener('submit', addItem);
 
+// aggancio un ascoltatore di eventi al bottone per svuotare la lista
+
+clearBtn.addEventListener('click', clearList);
+
 
 // ****** SETUP ITEMS **********
