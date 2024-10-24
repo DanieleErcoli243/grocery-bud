@@ -107,6 +107,8 @@ const clearList = () => {
 const deleteItem = (e) => {
   // uso l'evento per risalire al elemento genitore e lo salvo in una variabile
   const element = e.currentTarget.parentElement.parentElement;
+  // rimuovo l'elemento
+  list.removeChild(element);
 };
 
 const editItem = () => {
