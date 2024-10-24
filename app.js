@@ -29,6 +29,13 @@ const addItem = e => {
               <i class="fas fa-trash"></i>
             </button>
           </div>`;
+    // seleziono i bottoni per la modifica e la cancellazione
+    const deleteBtn = element.querySelector('.delete-btn');
+    const editBtn = element.querySelector('.edit-btn');
+    // aggancio un ascoltatore di eventi ai bottoni e passo delle funzioni non anonime
+    deleteBtn.addEventListener('click', deleteItem);
+    editBtn.addEventListener('click', editItem);
+
     // appendo l'elemento al genitore
     list.appendChild(element);
     // mostro l'alert
