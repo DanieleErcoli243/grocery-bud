@@ -109,6 +109,10 @@ const deleteItem = (e) => {
   const element = e.currentTarget.parentElement.parentElement;
   // rimuovo l'elemento
   list.removeChild(element);
+  // stabilisco le condizioni per nascondere il container
+  if (list.children.length === o) {
+    container.classList.remove('show-container');
+  }
 };
 
 const editItem = () => {
