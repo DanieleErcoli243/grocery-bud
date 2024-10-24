@@ -104,8 +104,9 @@ const clearList = () => {
 };
 
 // funzioni per cancellare e per modificare gli elementi della lista
-const deleteItem = () => {
-
+const deleteItem = (e) => {
+  // uso l'evento per risalire al elemento genitore e lo salvo in una variabile
+  const element = e.currentTarget.parentElement.parentElement;
 };
 
 const editItem = () => {
