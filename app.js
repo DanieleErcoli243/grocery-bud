@@ -103,6 +103,15 @@ const clearList = () => {
   };
 };
 
+// funzioni per cancellare e per modificare gli elementi della lista
+const deleteItem = () => {
+
+};
+
+const editItem = () => {
+
+};
+
 // ****** LOCAL STORAGE **********
 // creo una funzione per salvare il dato su Local Storage
 
