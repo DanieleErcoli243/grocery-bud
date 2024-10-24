@@ -87,6 +87,10 @@ const clearList = () => {
     });
     // rimuovo la classe che mostra il container
     container.classList.remove('show-container');
+    // mostro l'alert
+    displayAlert('The list is empty', 'success');
+    // rimuovo la list da local storage
+    // localStorage.removeItem(list));
   };
 };
 
