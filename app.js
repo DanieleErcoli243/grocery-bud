@@ -1,26 +1,26 @@
 // ****** FUNCTIONS **********
 
 const addItem = e => {
-    // impedisco il comportamento del form
-    e.preventDefault();
-    // registro il valore dell'input
-    const value = grocery.value;
-    // genero un id fasullo per il nuovo elemento
-    const id = new Date().toISOString();
-    // imposto le condizioni per creare un nuovo elemento
-    if (value && !isEdited) {
-        // creo un nuovo elemento
-        const element = document.createElement('article');
-        // gli aggiungo una classe
-        element.classList.add('grocery-item');
-        // aggiungo anche un id
-        const attr = document.createAttribute('data-id');
-        // col valore dell'id fasullo creato sopra
-        attr.value = id;
-        // assegno all'element il data attribute
-        element.setAttributeNode(attr);
-        // creo il contenuto dell'elemento
-        element.innerHTML = `<p class="title">${value}</p>
+  // impedisco il comportamento del form
+  e.preventDefault();
+  // registro il valore dell'input
+  const value = grocery.value;
+  // genero un id fasullo per il nuovo elemento
+  const id = new Date().toISOString();
+  // imposto le condizioni per creare un nuovo elemento
+  if (value && !isEdited) {
+    // creo un nuovo elemento
+    const element = document.createElement('article');
+    // gli aggiungo una classe
+    element.classList.add('grocery-item');
+    // aggiungo anche un id
+    const attr = document.createAttribute('data-id');
+    // col valore dell'id fasullo creato sopra
+    attr.value = id;
+    // assegno all'element il data attribute
+    element.setAttributeNode(attr);
+    // creo il contenuto dell'elemento
+    element.innerHTML = `<p class="title">${value}</p>
           <div class="btn-container">
             <button type="button" class="edit-btn">
               <i class="fas fa-edit"></i>
@@ -29,42 +29,52 @@ const addItem = e => {
               <i class="fas fa-trash"></i>
             </button>
           </div>`;
-        // appendo l'elemento al genitore
-        list.appendChild(element);
-        // mostro l'alert
-        displayAlert('item successfully added to the list', 'success');
-        // mostro anche il container
-        container.classList.add('show-container');
-        // salvo su local storage
-        addToLocalStorage(id, value);
-        // ripristino il comportamento di base
-        setBackToDefault();
+    // appendo l'elemento al genitore
+    list.appendChild(element);
+    // mostro l'alert
+    displayAlert('item successfully added to the list', 'success');
+    // mostro anche il container
+    container.classList.add('show-container');
+    // salvo su local storage
+    addToLocalStorage(id, value);
+    // ripristino il comportamento di base
+    setBackToDefault();
 
-    } else if (value && isEdited) {
+  } else if (value && isEdited) {
 
-    } else {
-        // invoco la funzione per mostrare l'alert
-        displayAlert('please, enter value', 'danger');
-    };
+  } else {
+    // invoco la funzione per mostrare l'alert
+    displayAlert('please, enter value', 'danger');
+  };
 };
 
 // creo una funzione per mostrare l'alert
 const displayAlert = (text, action) => {
-    // imposto un messaggio per l'alert
-    alert.innerText = text;
-    // aggiungo una classe che colori l'alert di rosso
-    alert.classList.add(`alert-${action}`);
-    // imposto un tempo oltre il quale l'alert deve sparire
-    setTimeout(() => {
-        // svuoto il messaggio per l'alert
-        alert.innerText = '';
-        // rimuovo una classe che colori l'alert di rosso
-        alert.classList.remove(`alert-${action}`);
-    }, 5000)
+  // imposto un messaggio per l'alert
+  alert.innerText = text;
+  // aggiungo una classe che colori l'alert di rosso
+  alert.classList.add(`alert-${action}`);
+  // imposto un tempo oltre il quale l'alert deve sparire
+  setTimeout(() => {
+    // svuoto il messaggio per l'alert
+    alert.innerText = '';
+    // rimuovo una classe che colori l'alert di rosso
+    alert.classList.remove(`alert-${action}`);
+  }, 5000)
 };
 
-// ripristino il comportamento di base
+// funzione per ripristinare il comportamento di base
 const setBackToDefault = () => {
+  // riassegno i valori delle variabili per ripristinare lo stato iniziale
+  grocery.value = '';
+  isEdited = false;
+  editId = '';
+  submitBtn.innerText = 'Submit';
+};
+
+// funzione per svuotare la lista
+
+const clearList = () => {
 
 };
 
