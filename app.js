@@ -75,7 +75,7 @@ const setBackToDefault = () => {
 // funzione per svuotare la lista
 
 const clearList = () => {
-  console.log('ao a fata');
+
   // seleziono tutti gli elementi della lista
   const items = document.querySelectorAll('.grocery-item');
   // stabilisco le condizioni per eliminare gli elementi
