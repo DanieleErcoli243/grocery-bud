@@ -112,7 +112,13 @@ const deleteItem = (e) => {
   // stabilisco le condizioni per nascondere il container
   if (list.children.length === o) {
     container.classList.remove('show-container');
-  }
+  };
+  // mostro l'alert
+  displayAlert('the item has been deleted successfully', 'success');
+  // ripristino lo stato iniziale
+  setBackToDefault();
+  // rimuovo l'elemento da local storage
+  // removeFromLocalStorage(id);
 };
 
 const editItem = () => {
@@ -123,6 +129,10 @@ const editItem = () => {
 // creo una funzione per salvare il dato su Local Storage
 
 const addToLocalStorage = (id, value) => {
+
+};
+// creo una funzione per togliere il dato da local storage
+const removeFromLocalStorage = (id) => {
 
 };
 
