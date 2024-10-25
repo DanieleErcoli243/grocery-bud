@@ -107,6 +107,8 @@ const clearList = () => {
 const deleteItem = (e) => {
   // uso l'evento per risalire al elemento genitore e lo salvo in una variabile
   const element = e.currentTarget.parentElement.parentElement;
+  // salvo l'id dell'elemento in una variabile
+  const id = element.dataset.id;
   // rimuovo l'elemento
   list.removeChild(element);
   // stabilisco le condizioni per nascondere il container
