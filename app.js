@@ -53,7 +53,7 @@ const addItem = e => {
     // invoco la funzione per mostrare l'alert 
     displayAlert('L\'elemento è stato modificato', 'success');
     // invoco al funzione per modificare il dato in local storage
-    editLocalStorage(editId);
+    editLocalStorage(editId, value);
     // invoco la funzione per ripristinare lo stato iniziale
     setBackToDefault();
 
@@ -150,6 +150,14 @@ const editItem = () => {
 // creo una funzione per salvare il dato su Local Storage
 
 const addToLocalStorage = (id, value) => {
+  // creo una variabile per salvare un oggetto con le proprietà dell'elemento
+  const grocery = { id, value };
+  // creo una variabile che contenga un array degli elementi della lista
+  let items = localStorage.getItem('list') ? JSON.parse(localStorage.getItem('list')) : [];
+  // aggiungo il valore dell'elemento all'array
+  items.push(grocery);
+  // uso il metodo per aggiungere il metodo a local storage
+  localStorage('list', JSON.stringify(items));
 
 };
 // creo una funzione per togliere il dato da local storage
@@ -158,7 +166,7 @@ const removeFromLocalStorage = (id) => {
 };
 
 // creo una funzione per modificare local storage
-const editLocalStorage = editId => {
+const editLocalStorage = (editId, value) => {
 
 };
 
