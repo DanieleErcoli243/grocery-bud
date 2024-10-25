@@ -124,7 +124,8 @@ const deleteItem = (e) => {
 };
 
 const editItem = () => {
-
+  // uso l'evento per risalire al elemento genitore e lo salvo in una variabile
+  const element = e.currentTarget.parentElement.parentElement;
 };
 
 // ****** LOCAL STORAGE **********
