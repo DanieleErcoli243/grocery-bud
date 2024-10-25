@@ -128,7 +128,7 @@ const deleteItem = (e) => {
   // ripristino lo stato iniziale
   setBackToDefault();
   // rimuovo l'elemento da local storage
-  // removeFromLocalStorage(id);
+  removeFromLocalStorage(id);
 };
 
 const editItem = () => {
@@ -166,7 +166,15 @@ const getLocalStorage = () => localStorage.getItem('list') ? JSON.parse(localSto
 
 // creo una funzione per togliere il dato da local storage
 const removeFromLocalStorage = (id) => {
-
+  // invoco la funzione nella variabile per avere l'array degli elementi
+  let items = getLocalStorage();
+  // uso un ciclo sull'array per filtrarlo
+  items = items.filter(item => {
+    // stabilisco la condizione per filtrare
+    if (item.id !== id) return item;
+    // risalvo items filtrato dentro local storage
+    localStorage('list', JSON.stringify(items))
+  })
 };
 
 // creo una funzione per modificare local storage
