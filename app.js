@@ -168,18 +168,30 @@ const getLocalStorage = () => localStorage.getItem('list') ? JSON.parse(localSto
 const removeFromLocalStorage = (id) => {
   // invoco la funzione nella variabile per avere l'array degli elementi
   let items = getLocalStorage();
-  // uso un ciclo sull'array per filtrarlo
+  // uso un metodo sull'array per filtrarlo
   items = items.filter(item => {
     // stabilisco la condizione per filtrare
     if (item.id !== id) return item;
     // risalvo items filtrato dentro local storage
     localStorage('list', JSON.stringify(items))
-  })
+  });
 };
 
 // creo una funzione per modificare local storage
 const editLocalStorage = (editId, value) => {
-
+  // invoco la funzione nella variabile per avere l'array degli elementi
+  let items = getLocalStorage();
+  // uso il metodo sull'array
+  items = items.map(item => {
+    // stabilisco la condizione per cambiare il valore dell'elemento
+    if (item.id === id) {
+      item.value = value;
+    };
+    // restituisco l'elemento
+    return item;
+    // aggiungo il nuovo array a local storage
+    localStorage('list', JSON.stringify(items))
+  });
 };
 
 // ****** SELECT ITEMS **********
