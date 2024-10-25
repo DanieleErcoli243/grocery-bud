@@ -48,6 +48,14 @@ const addItem = e => {
     setBackToDefault();
 
   } else if (value && isEdited) {
+    // assegno all'elemento da modificare il valore dell'input
+    editElement.innerHTML = value;
+    // invoco la funzione per mostrare l'alert 
+    displayAlert('L\'elemento è stato modificato', 'success');
+    // invoco al funzione per modificare il dato in local storage
+    editLocalStorage(editId);
+    // invoco la funzione per ripristinare lo stato iniziale
+    setBackToDefault();
 
   } else {
     // invoco la funzione per mostrare l'alert
@@ -146,6 +154,11 @@ const addToLocalStorage = (id, value) => {
 };
 // creo una funzione per togliere il dato da local storage
 const removeFromLocalStorage = (id) => {
+
+};
+
+// creo una funzione per modificare local storage
+const editLocalStorage = editId => {
 
 };
 
