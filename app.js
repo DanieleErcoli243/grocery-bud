@@ -1,5 +1,38 @@
 // ****** FUNCTIONS **********
 
+// scrivo una funzione per creare la lista degli elementi
+const createListItem = (id, value) => {
+  // creo un nuovo elemento
+  const element = document.createElement('article');
+  // gli aggiungo una classe
+  element.classList.add('grocery-item');
+  // aggiungo anche un id
+  const attr = document.createAttribute('data-id');
+  // col valore dell'id fasullo creato sopra
+  attr.value = id;
+  // assegno all'element il data attribute
+  element.setAttributeNode(attr);
+  // creo il contenuto dell'elemento
+  element.innerHTML = `<p class="title">${value}</p>
+        <div class="btn-container">
+          <button type="button" class="edit-btn">
+            <i class="fas fa-edit"></i>
+          </button>
+          <button type="button" class="delete-btn">
+            <i class="fas fa-trash"></i>
+          </button>
+        </div>`;
+  // seleziono i bottoni per la modifica e la cancellazione
+  const deleteBtn = element.querySelector('.delete-btn');
+  const editBtn = element.querySelector('.edit-btn');
+  // aggancio un ascoltatore di eventi ai bottoni e passo delle funzioni non anonime
+  deleteBtn.addEventListener('click', deleteItem);
+  editBtn.addEventListener('click', editItem);
+
+  // appendo l'elemento al genitore
+  list.appendChild(element);
+}
+
 const addItem = e => {
   // impedisco il comportamento del form
   e.preventDefault();
@@ -9,35 +42,8 @@ const addItem = e => {
   const id = new Date().toISOString();
   // imposto le condizioni per creare un nuovo elemento
   if (value && !isEdited) {
-    // creo un nuovo elemento
-    const element = document.createElement('article');
-    // gli aggiungo una classe
-    element.classList.add('grocery-item');
-    // aggiungo anche un id
-    const attr = document.createAttribute('data-id');
-    // col valore dell'id fasullo creato sopra
-    attr.value = id;
-    // assegno all'element il data attribute
-    element.setAttributeNode(attr);
-    // creo il contenuto dell'elemento
-    element.innerHTML = `<p class="title">${value}</p>
-          <div class="btn-container">
-            <button type="button" class="edit-btn">
-              <i class="fas fa-edit"></i>
-            </button>
-            <button type="button" class="delete-btn">
-              <i class="fas fa-trash"></i>
-            </button>
-          </div>`;
-    // seleziono i bottoni per la modifica e la cancellazione
-    const deleteBtn = element.querySelector('.delete-btn');
-    const editBtn = element.querySelector('.edit-btn');
-    // aggancio un ascoltatore di eventi ai bottoni e passo delle funzioni non anonime
-    deleteBtn.addEventListener('click', deleteItem);
-    editBtn.addEventListener('click', editItem);
-
-    // appendo l'elemento al genitore
-    list.appendChild(element);
+    // invoco la funzione che crea la lista degli elementi
+    createListItem();
     // mostro l'alert
     displayAlert('item successfully added to the list', 'success');
     // mostro anche il container
@@ -106,8 +112,8 @@ const clearList = () => {
     displayAlert('The list is empty', 'success');
     // ripristino lo stato iniziale
     setBackToDefault();
-    // rimuovo la list da local storage
-    // localStorage.removeItem(list));
+    // rimuovo la lista da local storage
+    localStorage.removeItem(list);
   };
 };
 
@@ -120,7 +126,7 @@ const deleteItem = (e) => {
   // rimuovo l'elemento
   list.removeChild(element);
   // stabilisco le condizioni per nascondere il container
-  if (list.children.length === o) {
+  if (list.children.length === 0) {
     container.classList.remove('show-container');
   };
   // mostro l'alert
@@ -131,7 +137,7 @@ const deleteItem = (e) => {
   removeFromLocalStorage(id);
 };
 
-const editItem = () => {
+const editItem = (e) => {
   // uso l'evento per risalire al elemento genitore e lo salvo in una variabile
   const element = e.currentTarget.parentElement.parentElement;
   // assegno dei valori alle variabili create per la modifica
@@ -157,7 +163,7 @@ const addToLocalStorage = (id, value) => {
   // aggiungo il valore dell'elemento all'array
   items.push(grocery);
   // uso il metodo per aggiungere il metodo a local storage
-  localStorage('list', JSON.stringify(items));
+  localStorage.setItem('list', JSON.stringify(items));
 
 };
 
@@ -173,12 +179,12 @@ const removeFromLocalStorage = (id) => {
     // stabilisco la condizione per filtrare
     if (item.id !== id) return item;
     // risalvo items filtrato dentro local storage
-    localStorage('list', JSON.stringify(items))
+    localStorage.setItem('list', JSON.stringify(items))
   });
 };
 
 // creo una funzione per modificare local storage
-const editLocalStorage = (editId, value) => {
+const editLocalStorage = (id, value) => {
   // invoco la funzione nella variabile per avere l'array degli elementi
   let items = getLocalStorage();
   // uso il metodo sull'array
@@ -191,8 +197,26 @@ const editLocalStorage = (editId, value) => {
     return item;
   });
   // aggiungo il nuovo array a local storage
-  localStorage('list', JSON.stringify(items))
+  localStorage.setItem('list', JSON.stringify(items))
 };
+
+// ****** SETUP ITEMS **********
+const setupItems = () => {
+  // invoco la funzione nella variabile per avere l'array degli elementi
+  let items = getLocalStorage();
+  // imposto la condizione sulla base della lunghezza dell'array
+  if (items.length > 0) {
+    // faccio un ciclo sull'array
+    items.forEach(item => {
+      // invoco la funzione che crea la lista degli elementi e le passo l'id e il valore
+      createListItem(item.id, item.value);
+    });
+    // mostro il container
+    container.classList.add('show-container');
+  };
+};
+
+
 
 // ****** SELECT ITEMS **********
 const alert = document.querySelector('.alert');
@@ -222,5 +246,4 @@ form.addEventListener('submit', addItem);
 clearBtn.addEventListener('click', clearList);
 
 // aggancio un ascoltatore di eventi alla pagina
-window.addEventListener('DOMContentLoaded', setUpItems);
-// ****** SETUP ITEMS **********
+window.addEventListener('DOMContentLoaded', setupItems);
