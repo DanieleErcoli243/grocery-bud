@@ -153,13 +153,17 @@ const addToLocalStorage = (id, value) => {
   // creo una variabile per salvare un oggetto con le proprietà dell'elemento
   const grocery = { id, value };
   // creo una variabile che contenga un array degli elementi della lista
-  let items = localStorage.getItem('list') ? JSON.parse(localStorage.getItem('list')) : [];
+  let items = getLocalStorage();
   // aggiungo il valore dell'elemento all'array
   items.push(grocery);
   // uso il metodo per aggiungere il metodo a local storage
   localStorage('list', JSON.stringify(items));
 
 };
+
+// creo una funzione per ottenere gli elementi da local storage
+const getLocalStorage = () => localStorage.getItem('list') ? JSON.parse(localStorage.getItem('list')) : [];
+
 // creo una funzione per togliere il dato da local storage
 const removeFromLocalStorage = (id) => {
 
