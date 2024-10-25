@@ -221,5 +221,6 @@ form.addEventListener('submit', addItem);
 
 clearBtn.addEventListener('click', clearList);
 
-
+// aggancio un ascoltatore di eventi alla pagina
+window.addEventListener('DOMContentLoaded', setUpItems);
 // ****** SETUP ITEMS **********
