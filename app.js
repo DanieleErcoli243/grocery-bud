@@ -189,9 +189,9 @@ const editLocalStorage = (editId, value) => {
     };
     // restituisco l'elemento
     return item;
-    // aggiungo il nuovo array a local storage
-    localStorage('list', JSON.stringify(items))
   });
+  // aggiungo il nuovo array a local storage
+  localStorage('list', JSON.stringify(items))
 };
 
 // ****** SELECT ITEMS **********
