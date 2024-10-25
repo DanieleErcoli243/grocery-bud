@@ -126,6 +126,16 @@ const deleteItem = (e) => {
 const editItem = () => {
   // uso l'evento per risalire al elemento genitore e lo salvo in una variabile
   const element = e.currentTarget.parentElement.parentElement;
+  // assegno dei valori alle variabili create per la modifica
+  editElement = e.currentTarget.parentElement.previousElementSibling;
+  // imposto questo elemento come valore dell'input
+  grocery.value = editElement.innerHTML;
+  // metto a true il valore della variabile d'appoggio 
+  isEdited = true;
+  // assegno un valore all'id da modificare
+  editId = element.dataset.id;
+  // modifico il testo nel bottone
+  submitBtn.innerText = 'Edit';
 };
 
 // ****** LOCAL STORAGE **********
